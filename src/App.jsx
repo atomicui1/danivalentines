@@ -16,6 +16,7 @@ export default function Page() {
     const x = Math.random() * 300 - 150;
     const y = Math.random() * 300 - 150;
     setNoButtonPos({ x, y });
+    setNoCount(noCount + 1);
   };
 
   const getNoButtonText = () => {
