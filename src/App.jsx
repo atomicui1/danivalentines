@@ -5,10 +5,17 @@ import lovesvg2 from "./assets/Love In The Air SVG Cut File.svg";
 export default function Page() {
   const [noCount, setNoCount] = useState(0);
   const [yesPressed, setYesPressed] = useState(false);
+  const [noButtonPos, setNoButtonPos] = useState({ x: 0, y: 0 });
   const yesButtonSize = noCount * 20 + 16;
 
   const handleNoClick = () => {
     setNoCount(noCount + 1);
+  };
+
+  const handleNoHover = () => {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 300 - 150;
+    setNoButtonPos({ x, y });
   };
 
   const getNoButtonText = () => {
@@ -58,7 +65,7 @@ export default function Page() {
           />
           <img
             className="h-[230px] rounded-lg shadow-lg"
-            src="https://gifdb.com/images/high/cute-Love-bear-roses-ou7zho5oosxnpo6k.gif"
+            src="https://media.tenor.com/3nhvK5KBXBUAAAAM/cute-bear.gif"
           />
           <h1 className="text-4xl md:text-6xl my-4 text-center">
             Dani, will you be my Valentine?
@@ -73,7 +80,9 @@ export default function Page() {
             </button>
             <button
               onClick={handleNoClick}
-              className=" bg-rose-500 hover:bg-rose-600 rounded-lg text-white font-bold py-2 px-4"
+              onMouseEnter={handleNoHover}
+              className="bg-rose-500 hover:bg-rose-600 rounded-lg text-white font-bold py-2 px-4 transition-transform duration-200"
+              style={{ transform: `translate(${noButtonPos.x}px, ${noButtonPos.y}px)` }}
             >
               {noCount === 0 ? "No" : getNoButtonText()}
             </button>
